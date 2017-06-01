@@ -4,19 +4,11 @@ class MineSweeper
   end
 
   def draw_board(matrix)
-    output = ""
-    matrix.each do |line|
-      output += "#{line.join(" ")}\n"
-    end
-    output
+    matrix.reduce(""){|result, line| result + "#{line.join(" ")}\n"}
   end
 
   def create_board(string)
-    matrix = []
-    string.split("\n").each do |line|
-      matrix.push(line.strip.split(" "))
-    end
-    matrix
+    string.split("\n").reduce([]){|matrix, line| matrix.push(line.strip.split(" "))}
   end
 
   def evaluate_moore_number(matrix)
